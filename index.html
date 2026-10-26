@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Director's Board | Red Pine Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111315;--panel:#1a1d20;--panel2:#22262a;--line:#2f3439;--text:#f2efe8;--muted:#a9afb5;--gold:#e8b44c;--ok:#7cc79a;--warn:#e8b44c;--bad:#e57d6b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);z-index:10}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.slate{font:700 13px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+nav{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
+nav a{font-size:14px;color:var(--muted);text-decoration:none;white-space:nowrap;padding:8px 0}
+nav a:hover{color:var(--text)}
+.hero{padding:64px 0 36px}
+.hero h1{font:700 clamp(40px,7vw,76px)/1.02 Fraunces,Georgia,serif;margin:0 0 18px;letter-spacing:-.02em;max-width:14ch}
+.hero p{font-size:19px;color:var(--muted);max-width:60ch;margin:0}
+.meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+section{padding:46px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font:700 clamp(28px,4vw,40px)/1.1 Fraunces,Georgia,serif;margin:0 0 8px}
+.lede{color:var(--muted);margin:0 0 28px;max-width:70ch}
+/* calls */
+.calls{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.call{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px}
+.call .n{font:700 12px Inter;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+.call h3{margin:0;font:600 20px/1.25 Fraunces,Georgia,serif}
+.call p{margin:0;color:#d9d6cf;font-size:15px}
+.call .status{margin-top:auto;padding-top:8px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+/* brands */
+.brands{display:grid;gap:22px}
+.brand{border-radius:18px;overflow:hidden;display:grid;grid-template-columns:minmax(260px,.85fr) 1.15fr;border:1px solid var(--line)}
+.brand .face{padding:30px;display:flex;flex-direction:column;gap:16px;justify-content:space-between;min-height:330px}
+.brand .face img{max-width:100%;height:auto;display:block}
+.brand .face .logo{max-height:170px;object-fit:contain;object-position:left}
+.brand .face .tag{font-size:22px;line-height:1.25;margin:0}
+.brand .info{background:var(--panel);padding:26px 28px;display:grid;gap:20px;align-content:start}
+.row{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start}
+.row>span:first-child{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.name-now{font-weight:600}
+.rename{display:block;font-size:14px;color:var(--gold);margin-top:2px}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.sw{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted);width:78px}
+.sw i{display:block;height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.15)}
+.fontpair{display:grid;gap:4px}
+.fontpair .d{font-size:26px;line-height:1.1}
+.fontpair .b{font-size:15px;color:#d9d6cf}
+.fontpair small{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;background:var(--panel2);color:var(--muted)}
+.pill.live{background:#203a2b;color:var(--ok)}.pill.wait{background:#3a3020;color:var(--gold)}.pill.off{background:#2a2d31}
+/* offer */
+.offer{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.offer .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.offer h3{margin:0 0 6px;font:600 24px Fraunces,Georgia,serif}
+.offer p{margin:0;color:#d9d6cf}
+.note{margin-top:14px;color:var(--muted);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.list{margin:0;padding-left:20px}
+.list li{margin:0 0 8px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.panel h3{margin:0 0 12px;font:600 20px Fraunces,Georgia,serif}
+footer{padding:36px 0 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (max-width:860px){
+  .brand{grid-template-columns:1fr}
+  .brand .face{min-height:0}
+  .offer,.two{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .row{grid-template-columns:1fr;gap:6px}
+  .brand .info{padding:22px 18px}
+  .brand .face{padding:22px 18px}
+  .calls{grid-template-columns:1fr}
+  th,td{padding-right:6px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="slate">Red Pine Studio</div>
+  <nav aria-label="Sections"><a href="#calls">Your calls</a><a href="#brands">Brands</a><a href="#offer">Offer</a><a href="#money">Money</a><a href="#company">Company</a><a href="#rules">Rules</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <h1>Director's board</h1>
+  <p>Everything the team has decided or wants to decide, in one place. You see the take. You give yours.</p>
+  <div class="meta">
+    <span class="chip"><span class="dot"></span>12 calls waiting for you</span>
+    <span class="chip"><span class="dot ok"></span>12 decisions locked</span>
+    <span class="chip">Updated Oct 26, 2026, 5:50 PM MT</span>
+  </div>
+</div>
+
+<section id="calls"><div class="wrap">
+  <h2>Your calls</h2>
+  <p class="lede">Each card is one decision with the team's recommendation. Tell Claude "approve 1, 3, 5" or "change 4: ..." and the page updates.</p>
+  <div class="calls">
+    <article class="call"><div class="n">Call 1</div><h3>Margin on every job</h3><p>Every job keeps at least $25 or 15% of the price, whichever is more, after the cost of getting the customer. Target $40 or 20%.</p><p>Open issue: cheap repeat visits (a $25 bin wash) need their own smaller floor.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 2</div><h3>Position the junk brand as insured and local</h3><p>Priced just under the big franchises, not as a cheap hauler. In-home carry-out, no curbside single items.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 3</div><h3>Pilot with junk removal only</h3><p>Yard work returns in spring. No snow this winter.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 4</div><h3>Junk prices</h3><p>$189 and $269 for one-person jobs. $329 and $449 for two-person jobs. See the brand card.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 5</div><h3>Same offer menu for every brand</h3><p>A one-time job, or a repeat plan every 4 or 12 weeks on the customer's trash day. Pay per visit, cancel any time.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 6</div><h3>Money rules</h3><p>No deposit. Card held 48 hours before. Charged after the customer says it looks good. $39 late cancel, $75 wasted trip.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 7</div><h3>What every pro must carry</h3><p>Their own liability insurance naming us, commercial auto, and workers' comp or the $50 state waiver for everyone on the job.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 8</div><h3>Rename the junk brand to Roomwise Hauling</h3><p>Bin Buddy Co. is blocked in Utah and other Bin Buddy bin cleaners exist. Roomwise Hauling is clear. Backup: Curbtidy.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 9</div><h3>Rename the pro network and yard brand</h3><p>Grab the Gig to Pinecrew. Everline Landscaping to Rakewell Yard Co. Both checked clear.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 10</div><h3>Reinstate the LLC</h3><p>About $82, paid as a shared company cost, so names can be filed this week.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 11</div><h3>Hosting</h3><p>Switch the free Oracle server to Pay As You Go. Still $0, but it stops the server from being shut off when it is quiet.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+    <article class="call"><div class="n">Call 12</div><h3>Company insurance</h3><p>About $138 or more a month. Decide with two broker quotes by Nov 9.</p><div class="status"><span class="dot"></span>Waiting for your take</div></article>
+  </div>
+</div></section>
+
+<section id="brands"><div class="wrap">
+  <h2>Brands</h2>
+  <p class="lede">Each brand's look, offer and prices. Renames are proposals until you approve calls 8 and 9; new logos come after the names are final.</p>
+  <div class="brands">
+
+    <article class="brand">
+      <div class="face" style="background:#FFFFFF;color:#003657">
+        <img class="logo" src="logos/bin-buddy-logo.png" alt="Bin Buddy Co. logo">
+        <p class="tag" style="font-family:Fredoka,sans-serif;font-weight:600">Make room for what matters.</p>
+      </div>
+      <div class="info">
+        <div class="row"><span>Name</span><div><span class="name-now">Bin Buddy Co.</span><span class="rename">Proposed: Roomwise Hauling (call 8)</span></div></div>
+        <div class="row"><span>Service</span><div>Junk removal, carried out from inside the home <span class="pill live">Pilot brand</span></div></div>
+        <div class="row"><span>Fonts</span><div class="fontpair"><span class="d" style="font-family:Fredoka,sans-serif;font-weight:600">Fredoka</span><span class="b" style="font-family:'Nunito Sans',sans-serif">Nunito Sans for body text</span></div></div>
+        <div class="row"><span>Colors</span><div class="swatches"><span class="sw"><i style="background:#003657"></i>Navy #003657</span><span class="sw"><i style="background:#62AFBA"></i>Teal #62AFBA</span><span class="sw"><i style="background:#E9F4F6"></i>Tint #E9F4F6</span><span class="sw"><i style="background:#FFFFFF"></i>White #FFFFFF</span></div></div>
+        <div class="row"><span>Prices</span><div><table><thead><tr><th>Job</th><th>Crew</th><th>Price</th><th>Pro gets up to</th></tr></thead><tbody>
+          <tr><td>Small</td><td>1 person</td><td class="num">$189</td><td class="num">$95</td></tr>
+          <tr><td>Medium</td><td>1 person</td><td class="num">$269</td><td class="num">$135</td></tr>
+          <tr><td>Large</td><td>2 people</td><td class="num">$329</td><td class="num">$170</td></tr>
+          <tr><td>Extra large</td><td>2 people</td><td class="num">$449</td><td class="num">$215</td></tr>
+        </tbody></table><p class="note">Plus the dump fee from the receipt. Extra junk at a per-yard rate the customer approves when booking. Mattresses, tires and appliances are add-ons.</p></div></div>
+      </div>
+    </article>
+
+    <article class="brand">
+      <div class="face" style="background:#FAF7F1;color:#163C39">
+        <img class="logo" src="logos/everline-logo.png" alt="Everline Landscaping logo">
+        <p class="tag" style="font-family:Manrope,sans-serif;font-weight:700">The yard keeps moving. So do we.</p>
+      </div>
+      <div class="info">
+        <div class="row"><span>Name</span><div><span class="name-now">Everline Landscaping</span><span class="rename">Must rename: a national EVERLINE trademark covers snow removal. Proposed: Rakewell Yard Co. (call 9)</span></div></div>
+        <div class="row"><span>Service</span><div>Leaf and spring yard cleanup <span class="pill wait">Returns in spring</span></div></div>
+        <div class="row"><span>Fonts</span><div class="fontpair"><span class="d" style="font-family:Manrope,sans-serif;font-weight:800">Manrope</span><span class="b" style="font-family:Inter,sans-serif">Inter for body text</span></div></div>
+        <div class="row"><span>Colors</span><div class="swatches"><span class="sw"><i style="background:#163C39"></i>Pine #163C39</span><span class="sw"><i style="background:#0F2C2A"></i>Deep #0F2C2A</span><span class="sw"><i style="background:#141414"></i>Ink #141414</span><span class="sw"><i style="background:#FAF7F1"></i>Paper #FAF7F1</span></div></div>
+        <div class="row"><span>Prices</span><div><table><thead><tr><th>Job</th><th>Price</th><th>Pro gets up to</th></tr></thead><tbody>
+          <tr><td>Standard cleanup</td><td class="num">$195</td><td class="num">$130</td></tr>
+        </tbody></table><p class="note">Plus the green waste fee from the receipt. Not live until spring.</p></div></div>
+      </div>
+    </article>
+
+    <article class="brand">
+      <div class="face" style="background:#172B35;color:#F3F1E8">
+        <div style="font:800 54px/0.95 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:-.02em">Grab<br>the Gig<span style="color:#F0BB44">.</span></div>
+        <p class="tag" style="font-family:'DM Sans',sans-serif;font-weight:500">See good jobs. Choose your next one.</p>
+      </div>
+      <div class="info">
+        <div class="row"><span>Name</span><div><span class="name-now">Grab the Gig</span><span class="rename">Proposed: Pinecrew (call 9). Grab-A-Mow is recruiting the same Salt Lake pros.</span></div></div>
+        <div class="row"><span>Role</span><div>The pro network. Pros see fixed-pay job offers, claim the ones they want and get paid after proof photos. Customers never see this name.</div></div>
+        <div class="row"><span>Fonts</span><div class="fontpair"><span class="d" style="font-family:'Barlow Condensed',sans-serif;font-weight:800">Barlow Condensed</span><span class="b" style="font-family:'DM Sans',sans-serif">DM Sans for body text</span></div></div>
+        <div class="row"><span>Colors</span><div class="swatches"><span class="sw"><i style="background:#172B35"></i>Ink #172B35</span><span class="sw"><i style="background:#F0BB44"></i>Yellow #F0BB44</span><span class="sw"><i style="background:#F3F1E8"></i>Paper #F3F1E8</span><span class="sw"><i style="background:#B8C6C8"></i>Line #B8C6C8</span></div></div>
+        <div class="row"><span>Pro pay</span><div>Fixed pay shown before claiming. No lead fees, no bidding. Paid next business day, same day once Stripe approves. Dump fees paid back.</div></div>
+      </div>
+    </article>
+
+    <article class="brand">
+      <div class="face" style="background:#FFFCF6;color:#584537">
+        <div style="font:700 50px/1 Outfit,sans-serif;letter-spacing:-.02em">Salt <span style="color:#C46A37">&amp;</span> Sun<br><span style="font-size:24px;font-weight:600">Detail</span></div>
+        <p class="tag" style="font-family:Outfit,sans-serif;font-weight:600">Care for every mile.</p>
+      </div>
+      <div class="info">
+        <div class="row"><span>Name</span><div><span class="name-now">Salt &amp; Sun Detail</span><span class="rename" style="color:var(--ok)">Name is clear. No logo yet.</span></div></div>
+        <div class="row"><span>Service</span><div>Mobile car detailing <span class="pill off">Inactive</span></div></div>
+        <div class="row"><span>Fonts</span><div class="fontpair"><span class="d" style="font-family:Outfit,sans-serif;font-weight:700">Outfit</span><span class="b" style="font-family:'DM Sans',sans-serif">DM Sans for body text</span></div></div>
+        <div class="row"><span>Colors</span><div class="swatches"><span class="sw"><i style="background:#584537"></i>Saddle #584537</span><span class="sw"><i style="background:#C46A37"></i>Copper #C46A37</span><span class="sw"><i style="background:#352B24"></i>Ink #352B24</span><span class="sw"><i style="background:#FFFCF6"></i>Paper #FFFCF6</span></div></div>
+        <div class="row"><span>Prices</span><div>Not set. Research says: no public booking until a small pilot with a few pros proves it.</div></div>
+      </div>
+    </article>
+
+    <article class="brand">
+      <div class="face" style="background:#FAF7F1;color:#1B3A5F">
+        <div style="display:flex;align-items:center;gap:14px"><img src="logos/bluefern-logo.png" alt="" style="height:110px;width:auto"><div style="font:700 40px/1 'Cormorant Garamond',serif">Blue Fern<br>Cleaning</div></div>
+        <p class="tag" style="font-family:'Cormorant Garamond',serif;font-weight:700">A clearer standard for your space.</p>
+      </div>
+      <div class="info">
+        <div class="row"><span>Name</span><div><span class="name-now">Blue Fern Cleaning</span><span class="rename" style="color:var(--ok)">Name is clear.</span></div></div>
+        <div class="row"><span>Service</span><div>Home and commercial cleaning <span class="pill off">Inactive</span></div></div>
+        <div class="row"><span>Fonts</span><div class="fontpair"><span class="d" style="font-family:'Cormorant Garamond',serif;font-weight:700">Cormorant Garamond</span><span class="b" style="font-family:Inter,sans-serif">Inter for body text</span></div></div>
+        <div class="row"><span>Colors</span><div class="swatches"><span class="sw"><i style="background:#1B3A5F"></i>Navy #1B3A5F</span><span class="sw"><i style="background:#C8995D"></i>Brass #C8995D</span><span class="sw"><i style="background:#1A1A1A"></i>Ink #1A1A1A</span><span class="sw"><i style="background:#FAF7F1"></i>Paper #FAF7F1</span></div></div>
+        <div class="row"><span>Prices</span><div>Not set. Commercial cleaning does not fit the shared offer menu yet, so it waits.</div></div>
+      </div>
+    </article>
+
+  </div>
+</div></section>
+
+<section id="offer"><div class="wrap">
+  <h2>The offer</h2>
+  <p class="lede">Every brand sells the same two things, on the same calendar, so pros and scheduling work one way everywhere.</p>
+  <div class="offer">
+    <div class="card"><h3>One-time job</h3><p>Customer sends photos, gets a price, picks a day and time window. Charged after the job.</p></div>
+    <div class="card"><h3>Repeat plan</h3><p>Every 4 or 12 weeks, on the customer's trash day. Charged after each visit. No contract. Cancel online in one step. Every plan starts with a one-time job.</p></div>
+  </div>
+  <p class="note">Does not fit, so it waits: lawn mowing (people buy it every 1 to 2 weeks), snow (runs on storms), commercial cleaning.</p>
+</div></section>
+
+<section id="money"><div class="wrap">
+  <h2>Money rules</h2>
+  <p class="lede">How customers pay and how pros get paid. Pending call 6; a Utah attorney reviews the customer wording before launch.</p>
+  <div class="panel"><table><tbody>
+    <tr><td>Booking</td><td>Card saved, nothing charged, no deposit</td></tr>
+    <tr><td>48 hours before</td><td>Hold placed on the card</td></tr>
+    <tr><td>After the job</td><td>Charged when the customer taps Looks good, or after 24 hours with no complaint</td></tr>
+    <tr><td>Cancel more than 24 hours ahead</td><td>Free</td></tr>
+    <tr><td>Cancel within 24 hours</td><td class="num">$39</td></tr>
+    <tr><td>Pro arrives and cannot work</td><td class="num">$75</td></tr>
+    <tr><td>Small miss</td><td>Refund for the part not done</td></tr>
+    <tr><td>Bigger miss (1 yard or more)</td><td>A crew comes back</td></tr>
+    <tr><td>Extras at the door</td><td>Never sold on site. Only the per-yard rate approved when booking</td></tr>
+    <tr><td>Pro pay</td><td>Next business day, same day once Stripe approves. Dump fees paid back</td></tr>
+    <tr><td>Card disputes</td><td>Company absorbs them. Pros only pay for proven fault, capped at that job</td></tr>
+  </tbody></table></div>
+</div></section>
+
+<section id="company"><div class="wrap">
+  <h2>Company and names</h2>
+  <p class="lede">The LLC has to be reinstated before any brand name can be filed.</p>
+  <div class="panel"><table><thead><tr><th>Item</th><th>Status</th><th>Next step</th><th>Cost</th></tr></thead><tbody>
+    <tr><td>Red Pine Creative Marketing LLC</td><td><span class="pill wait">Needs reinstatement</span></td><td>Diego reinstates online</td><td class="num">~$82</td></tr>
+    <tr><td>Junk brand name</td><td><span class="pill wait">Rename</span></td><td>File Roomwise Hauling</td><td class="num">$22</td></tr>
+    <tr><td>Pro network name</td><td><span class="pill wait">Rename</span></td><td>File Pinecrew</td><td class="num">$22</td></tr>
+    <tr><td>Yard brand name</td><td><span class="pill wait">Rename</span></td><td>File Rakewell Yard Co. in spring</td><td class="num">$22 later</td></tr>
+    <tr><td>Salt &amp; Sun Detail, Blue Fern Cleaning</td><td><span class="pill live">Clear</span></td><td>File when each goes live</td><td class="num">$22 each</td></tr>
+  </tbody></table></div>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <h2>Rules of the house</h2>
+  <div class="two">
+    <div class="panel"><h3>Your standing rules</h3><ol class="list">
+      <li>Every job meets or beats the margin floor.</li>
+      <li>Every brand runs the same business model.</li>
+      <li>Customers never see the pro network name.</li>
+      <li>$0 spending until a brand earns.</li>
+      <li>No cold calls or cold emails to customers.</li>
+      <li>Battle tested before anything goes live.</li>
+      <li>Big questions get dug into, then attacked, before deciding.</li>
+    </ol></div>
+    <div class="panel"><h3>Already locked by the team</h3><ul class="list">
+      <li>The system blocks any job that would break the margin floor.</li>
+      <li>Every customer is shown the Google review link; bad ratings come to you first.</li>
+      <li>Every booking records where the customer came from.</li>
+      <li>Customers pick a day and time window.</li>
+      <li>Card hold placed close to the job.</li>
+      <li>One background timer runs offers, payouts and reminders.</li>
+      <li>All 115 bugs from testing fixed before launch.</li>
+      <li>No paid ads for the first 60 days.</li>
+      <li>Daily encrypted backups, proven by a full wipe and restore.</li>
+    </ul></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Red Pine Studio. Kept up to date by Claude. Not for public sharing.</div></footer>
+</body>
+</html>
