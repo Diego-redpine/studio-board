@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Discoveries Briefing | Red Pine Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111315;--panel:#1a1d20;--panel2:#22262a;--line:#2f3439;--text:#f2efe8;--muted:#a9afb5;--gold:#e8b44c;--ok:#7cc79a;--warn:#e8b44c;--bad:#e57d6b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);z-index:10}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.slate{font:700 13px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap}
+nav{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;min-width:0}
+nav a{font-size:14px;color:var(--muted);text-decoration:none;white-space:nowrap;padding:8px 0}
+nav a:hover{color:var(--text)}
+.hero{padding-top:64px;padding-bottom:30px}
+.hero h1{font:700 clamp(40px,7vw,76px)/1.02 Fraunces,Georgia,serif;margin:0 0 18px;letter-spacing:-.02em;max-width:16ch}
+.hero p{font-size:19px;color:var(--muted);max-width:62ch;margin:0}
+.meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+section{padding:46px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font:700 clamp(28px,4vw,40px)/1.1 Fraunces,Georgia,serif;margin:0 0 8px}
+.lede{color:var(--muted);margin:0 0 28px;max-width:72ch}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.num,th.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scale{table-layout:fixed}
+.scale th:first-child,.scale td:first-child{width:34%}
+.scale th:not(:first-child),.scale td:not(:first-child){text-align:right;white-space:normal}
+.pill{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;background:var(--panel2);color:var(--muted);white-space:nowrap}
+.pill.live{background:#203a2b;color:var(--ok)}.pill.wait{background:#3a3020;color:var(--gold)}.pill.bad{background:#3a2420;color:var(--bad)}
+.note{margin-top:14px;color:var(--muted);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.list{margin:0;padding-left:20px}
+.list li{margin:0 0 8px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.panel h3{margin:0 0 12px;font:600 20px Fraunces,Georgia,serif}
+footer{padding:36px 0 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+/* briefing additions */
+.tldr{background:linear-gradient(180deg,#24211a,#1a1d20);border:1px solid #5a4a26;border-radius:16px;padding:22px 24px;margin-top:30px;max-width:900px}
+.tldr .k{font:700 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.tldr ol{margin:0;padding-left:22px}
+.tldr li{margin:0 0 10px;font-size:17px;line-height:1.5}
+.tldr li:last-child{margin:0}
+.disc{display:grid;gap:14px}
+.d{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:grid;grid-template-columns:54px 1fr;gap:6px 16px}
+.d .no{font:700 34px/1 Fraunces,Georgia,serif;color:var(--gold);grid-row:span 2}
+.d h3{margin:0;font:600 21px/1.25 Fraunces,Georgia,serif}
+.d dl{margin:4px 0 0;display:grid;grid-template-columns:120px 1fr;gap:6px 14px}
+.d dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.d dd{margin:0;color:#d9d6cf;font-size:15px}
+.src{font-size:12px;color:var(--muted)}
+.d .src{grid-column:2}
+section{scroll-margin-top:60px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.card .n{font:700 12px Inter;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+.card h3{margin:0;font:600 19px/1.25 Fraunces,Georgia,serif}
+.card p{margin:0;color:#d9d6cf;font-size:15px}
+.card .was{color:var(--muted);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font:700 30px/1.1 Fraunces,Georgia,serif;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted)}
+.h3{font:600 22px Fraunces,Georgia,serif;margin:30px 0 12px}
+.callrow{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+.callrow .rank{font:700 26px/1 Fraunces,Georgia,serif;color:var(--gold)}
+.callrow h3{margin:0 0 4px;font:600 18px/1.3 Fraunces,Georgia,serif}
+.callrow p{margin:0;color:#d9d6cf;font-size:15px}
+.callrow.top{border-color:#5a4a26;background:#201e18}
+.green{color:var(--ok)}.amber{color:var(--gold)}.red{color:var(--bad)}
+@media (max-width:860px){
+  .two{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .hero{padding-top:44px;padding-bottom:24px}
+  .hero p{font-size:17px}
+  .tldr{padding:18px 16px}
+  .tldr li{font-size:16px}
+  .d{grid-template-columns:1fr;padding:18px 16px}
+  .d .no{grid-row:auto;font-size:26px}
+  .d .src{grid-column:auto}
+  .d dl{grid-template-columns:1fr;gap:2px}
+  .d dd{margin-bottom:8px}
+  .grid3{grid-template-columns:1fr}
+  .panel{padding:18px 16px}
+  th,td{padding-right:6px}
+  table{font-size:13px}
+  .callrow{grid-template-columns:30px 1fr;padding:14px}
+  .stat b{font-size:24px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="slate" href="index.html">Red Pine Studio</a>
+  <nav aria-label="Sections"><a href="index.html">Board</a><a href="#top10">Top 10</a><a href="#surprises">Surprises</a><a href="#money">Money</a><a href="#model">Model</a><a href="#built">Built</a><a href="#unknowns">Unknowns</a><a href="#calls">Your calls</a><a href="#playbooks">Playbooks</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <h1>Discoveries briefing</h1>
+  <p>What one day and night of research and building taught us about Service Studio. The take, not the process. Every number here comes from a case file; anything we have not proven yet is marked as a guess.</p>
+  <div class="meta">
+    <span class="chip"><span class="dot ok"></span>19 cases, 4 red teams, 5 scale reports</span>
+    <span class="chip"><span class="dot"></span>13 calls waiting for you</span>
+    <span class="chip">Written Oct 27, 2026, 3:30 AM MT</span>
+  </div>
+
+  <div class="tldr" role="note" aria-label="If you read nothing else">
+    <p class="k">If you read nothing else</p>
+    <ol>
+      <li><b>The plan holds, but each job is thin.</b> A $300 job leaves about $57 after pros, dump fees and the cost of the customer. That falls to about $27 if pros get more than 63% or a customer costs more than $40.</li>
+      <li><b>The company cannot sell yet.</b> The LLC was dissolved by the state on June 21, 2026, and two brand names (Bin Buddy, Everline) are taken. Reinstating costs about $82; nothing gets filed before that.</li>
+      <li><b>Our first junk prices lost money.</b> New prices go by crew size ($189 and $269 for one person, $329 and $449 for two), set just under the big franchises.</li>
+      <li><b>The engine is real and tested:</b> 348 unit tests, 19 of 19 real-browser journeys, a full production rehearsal, English and Spanish. Still open: 28 safety builds before the first live job.</li>
+      <li><b>Your first call: P13.</b> Approve a small capped launch fund (LLC, name filings, insurance, background checks), or the live launch waits. Profit will come from repeat customers, property-manager accounts and dense pro coverage, not from ads.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- 1. TOP 10 -->
+<section id="top10"><div class="wrap">
+  <h2>The 10 biggest discoveries</h2>
+  <p class="lede">Ranked by how much each one changes what we do next.</p>
+  <div class="disc">
+
+    <article class="d"><div class="no">1</div><h3>The company that would own the brands is dissolved</h3>
+      <dl><dt>What we found</dt><dd>Red Pine Creative Marketing LLC missed its January 31, 2026 renewal. The state dissolved it on June 21, 2026. The engine also had the wrong legal name in it ("Red Pine Creative LLC" belongs to a stranger's old company).</dd>
+      <dt>Why it matters</dt><dd>A brand name (DBA) is filed by a live company. Stripe, receipts, insurance and contracts all need a seller in good standing. Nothing can go live until this is fixed.</dd>
+      <dt>What we did</dt><dd>Froze all name filings and domain buys. Built your step-by-step go-live kit. Reinstatement is allowed for two years and costs about $82 (your call 10).</dd></dl>
+      <span class="src">Source: case C10 names, go-live kit</span></article>
+
+    <article class="d"><div class="no">2</div><h3>Our first junk prices lost money</h3>
+      <dl><dt>What we found</dt><dd>The $139 / $199 / $279 tiers fail the margin floor in every scenario once insurance and the cost of getting a customer are counted. Even $169 / $249 / $349 only worked if a customer cost under about $21 to $44.</dd>
+      <dt>Why it matters</dt><dd>Cheap owner-operators (one charges $150 for an in-home half load) will always beat us on price. Insured two-person crews cost real money.</dd>
+      <dt>What we did</dt><dd>Repriced by crew size: $189 / $269 one person, $329 / $449 two people. Pros get up to $95 / $135 / $170 / $215 plus the dump receipt. Positioned as an insured local brand just under the franchises. Software now blocks any job below the floor.</dd></dl>
+      <span class="src">Source: C4 unit economics, red team C4/C5/C9, C11 margin</span></article>
+
+    <article class="d"><div class="no">3</div><h3>Profit per job is thin, so volume and repeat business are everything</h3>
+      <dl><dt>What we found</dt><dd>On a $300 average job: $174 to the pro, $21 dump and supplies, $9 card fees, $6 refund reserve, $8 insurance and tools. That leaves $82, then about $25 to win the customer, so $57 per job (19%).</dd>
+      <dt>Why it matters</dt><dd>Small slips erase it. At $50M a year, paying pros 5 more points costs $2.5M; $10 more per customer costs $1.67M; refunds rising from 2% to 5% burns $1.5M.</dd>
+      <dt>What we did</dt><dd>Made the margin floor law in code. Every booking records where the customer came from. The money model gets rebuilt from real numbers at 100 and 500 jobs.</dd></dl>
+      <span class="src">Source: round 2 scale economics, C19 synthesis section 2</span></article>
+
+    <article class="d"><div class="no">4</div><h3>The app is the small part; the company is 14 departments</h3>
+      <dl><dt>What we found</dt><dd>Every big failure in this industry came from a missing rule, not a missing feature. DoorDash nearly died in Sept 2013 from a rush it could not switch off. HomeAdvisor paid up to $7.2M for selling weak leads. Instacart paid $60M for fees the screen hid.</dd>
+      <dt>Why it matters</dt><dd>We can copy their prevention rules on day one instead of learning them through lawsuits.</dd>
+      <dt>What we did</dt><dd>Wrote the company operating system: 14 departments, each with a daily, weekly and monthly rhythm, plus 28 "build before the first live job" items (booking cap, a defect code on every job, a claims desk, a written pro removal and appeal policy).</dd></dl>
+      <span class="src">Source: C19a big platforms, C19 synthesis</span></article>
+
+    <article class="d"><div class="no">5</div><h3>An all-in-one app like TaskRabbit or Angi would be a mistake</h3>
+      <dl><dt>What we found</dt><dd>Angi's lead network revenue fell 72% in 2025 after it let homeowners pick their own pro. Its managed, pre-priced line fell 23%.</dd>
+      <dt>Why it matters</dt><dd>Your instinct was right: being the brand that books, charges and stands behind the work beats running an open app.</dd>
+      <dt>What we did</dt><dd>Kept the branded-company model. You then chose many brands over one brand (call 13), so the research risks became engineering requirements (see the Model section).</dd></dl>
+      <span class="src">Source: C19d model check (Angi 10-K for 2025)</span></article>
+
+    <article class="d"><div class="no">6</div><h3>The closest look-alikes got sued, fined or folded</h3>
+      <dl><dt>What we found</dt><dd>Handy paid a $6M California settlement (pros must set their own rates) and $2.95M to the FTC and New York in 2025 (earnings claims, hidden fines). Homejoy died in 2015 after a $19 first clean, a 25% cut, customers going around it, and expanding abroad too early.</dd>
+      <dt>Why it matters</dt><dd>The legal line is control. If we set the pro's pay, hours and penalties, they start to look like employees.</dd>
+      <dt>What we did</dt><dd>Locked in: pros accept, decline or counter each payout (inside a ceiling the margin allows); zero fines ever; scores only change who sees offers first; no hourly or monthly earnings promises in recruiting copy.</dd></dl>
+      <span class="src">Source: C19b home-service marketplaces</span></article>
+
+    <article class="d"><div class="no">7</div><h3>Selling extras at the door triggers the FTC 3-day cancel rule</h3>
+      <dl><dt>What we found</dt><dd>Our first fix ("the office prices extras by phone") failed the red team: the rule covers sales made at the home even when the customer invited us.</dd>
+      <dt>Why it matters</dt><dd>Any sale made on site could be cancelled for 3 days and needs a formal notice. A plan offered by the pro at the door counts too.</dd>
+      <dt>What we did</dt><dd>Extra junk is charged only at a per-yard rate the customer approves online when booking, with a cap. Pros never quote, sell or collect on site. Plans are offered by email after the job is charged. Same-day extras stay switched off until the attorney answers.</dd></dl>
+      <span class="src">Source: C12 payments, red team C12, C13, C19 section 7.1</span></article>
+
+    <article class="d"><div class="no">8</div><h3>Customers come from Google and partners, not from paid ads</h3>
+      <dl><dt>What we found</dt><dd>Google Local Services Ads cost about $94 to $134 per booked junk job. Industry data: $117.92 per landscaping lead and $46.99 per cleaning lead (leads, not jobs). Facebook Marketplace bans service listings. Nextdoor junk threads in Draper were nearly empty.</dd>
+      <dt>Why it matters</dt><dd>Paid leads break the margin floor at our prices. Google allows one business profile per real location with its own staff, so map pins for their own sake are not allowed.</dd>
+      <dt>What we did</dt><dd>No paid ads for 60 days. Google Business Profile is the main engine; first jobs come from your network and $5 Craigslist posts. Planned mix at $1M: 40% property-manager and other business accounts, 25% Google, 25% repeat and cross-brand, 10% paid.</dd></dl>
+      <span class="src">Source: C2 demand rounds 1 and 2, round 2 demand at scale, red team C4/C5/C9</span></article>
+
+    <article class="d"><div class="no">9</div><h3>Money could leak in 26 places; 8 were wide open</h3>
+      <dl><dt>What we found</dt><dd>The engine's job ledger is solid but it is not a set of books. Of 26 leak paths: 7 caught, 11 partly caught, 8 open. Examples: the $15 card dispute fee was recorded nowhere; a won dispute stayed a loss; a failed pro payout still showed as paid; sales tax was collected but never set aside.</dd>
+      <dt>Why it matters</dt><dd>This is exactly your fear. Sales tax is the state's money held in trust, and spending it is a personal-level problem.</dd>
+      <dt>What we did</dt><dd>Designed the accounting department: 5 AI roles (Recorder, Reconciler, Controller, Analyst, Tax and Compliance), a CPA and you. No AI can move money. No role checks its own work. Two bank accounts (operating and held money). Your time: about 10 minutes a week plus month end. The leak fixes are written but not merged yet.</dd></dl>
+      <span class="src">Source: C18 accounting parts A and B, C18 design</span></article>
+
+    <article class="d"><div class="no">10</div><h3>A human operations lead is needed from the first live job</h3>
+      <dl><dt>What we found</dt><dd>Round 1 said "zero staff at $1M". Round 2 disagreed: every company running AI support at scale still had people for escalations, and physical jobs create damage and safety incidents. $1M needs 2 to 3 people besides you; $10M needs 5.</dd>
+      <dt>Why it matters</dt><dd>Your 10 hours a week stays the same at $1M, $10M and $50M only if someone else holds day-to-day authority.</dd>
+      <dt>What we did</dt><dd>Until revenue pays for it, the ops lead is you or someone you name. That hire is the first thing revenue funds. Claims over $250 go to a human; AI can never deny a claim.</dd></dl>
+      <span class="src">Source: round 2 AI-native org, round 2 risk and claims, C19 section 0</span></article>
+
+  </div>
+</div></section>
+
+<!-- 2. SURPRISES -->
+<section id="surprises"><div class="wrap">
+  <h2>Surprises and changed minds</h2>
+  <p class="lede">Things we believed on Oct 25 that turned out wrong, and things nobody expected.</p>
+  <div class="grid3">
+    <article class="card"><div class="n">Entity</div><h3>The LLC is dissolved</h3><p>We assumed the company existed. The state dissolved it June 21, 2026 for a missed renewal. Fixable for about $82 within two years.</p><span class="src">C10</span></article>
+    <article class="card"><div class="n">Names</div><h3>Two brand names are taken</h3><p>Bin Buddy: Utah says the name is unavailable, a Bin Buddies LLC formed in West Jordan in July, and binbuddyco.com is a live bin cleaner. Everline: a federal trademark that covers snow removal, with a Salt Lake office. Grab the Gig is risky too: a pending "Grab-A-Mow" trademark belongs to a company recruiting the same Salt Lake pros.</p><p class="was">Proposed: Roomwise Hauling, Rakewell Yard Co., Pinecrew. Salt &amp; Sun and Blue Fern are clear.</p><span class="src">C10, red team C10</span></article>
+    <article class="card"><div class="n">Prices</div><h3>Old prices lost money</h3><p>The approval-sheet junk prices failed in every scenario. The fix was pricing by crew size, because the $50 workers' comp waiver stops covering anyone once a pro brings a paid helper.</p><span class="src">C4, red team C4/C5/C9</span></article>
+    <article class="card"><div class="n">Reviews</div><h3>Asking only happy customers for reviews is banned</h3><p>Your idea was to catch the bad ones first. Google and the FTC ban "review gating". Built instead: every customer sees the Google link; low ratings also open a recovery item for you. We still keep every rating for pro scorecards.</p><span class="src">C2, C3, decision ledger</span></article>
+    <article class="card"><div class="n">History</div><h3>Handy and Homejoy are the warning</h3><p>Handy: $6M plus $2.95M in penalties for setting pay, fining pros and inflating earnings claims. Homejoy: dead in 2015 after a $19 promo, a 25% cut and early expansion. Survivors let the pro set the price, or hire employees.</p><span class="src">C19b</span></article>
+    <article class="card"><div class="n">Market</div><h3>Angi's lead business collapsed</h3><p>Network revenue down 72% in 2025; total revenue $1,030.5M, down 13%. Selling leads to pros is a shrinking business.</p><span class="src">C19d</span></article>
+    <article class="card"><div class="n">Law</div><h3>On-site sales and the FTC 3-day rule</h3><p>Our first workaround failed the red team. Now all extras are approved online at booking, inside a cap. An attorney still has to confirm.</p><span class="src">C12, red team C12</span></article>
+    <article class="card"><div class="n">Money</div><h3>Accounting leaks were hiding in the code</h3><p>8 open leak paths, including an unrecorded $15 dispute fee and a ledger line that overstated our margin by the dump reimbursement. Also: no brand tag on card payments yet.</p><span class="src">C18 part B</span></article>
+    <article class="card"><div class="n">Design</div><h3>Generated art beat hand-drawn art</h3><p>The first Grab the Gig redesign used hand-coded drawings and scored 7 out of 10 from you: right idea, not polished. Image generation from our own sketches gave illustrator quality in minutes at $0 on the ChatGPT plan. Now the rule for every site.</p><span class="src">Hourly log, design memory</span></article>
+    <article class="card"><div class="n">Languages</div><h3>Multilingual means rewriting, not translating</h3><p>A native writer drafts from the brief, not from the English. Spanish uses "tú" for pros and "usted" for homeowners. Slang like "troca" or "jale" only in texts and social posts, because Utah's fastest-growing Hispanic group is Venezuelan. Spanish hero: "El cliente ya dijo que sí."</p><span class="src">C14, C17</span></article>
+    <article class="card"><div class="n">Copy</div><h3>Our recruiting headline scored 7 out of 20</h3><p>"Got a truck or a yard crew? Get local jobs." was generic and invited uninsured side-hustlers. New: "Junk hauling and yard jobs, already booked. See your pay before you say yes." The bottom-of-page 9-field form is gone: a 2-input step sits in the hero and a sticky phone bar.</p><span class="src">C15, C16</span></article>
+    <article class="card"><div class="n">Benchmarks</div><h3>Franchise numbers were smaller than we thought</h3><p>Junk King's 2025 average franchise did $551,635, not the $1.41M we first used (that was a 2022 top quarter). College HUNKS averages $1.555M; mature 1-800-GOT-JUNK franchisees $3.70M.</p><span class="src">Round 2 scale economics</span></article>
+    <article class="card"><div class="n">Tax</div><h3>Utah taxes some of our services</h3><p>Car detailing and interior cleaning are taxable; leaf cleanup is likely exempt; junk removal is unclear, so we charge no tax on it until a CPA confirms.</p><span class="src">Hourly log, C4</span></article>
+    <article class="card"><div class="n">Texts</div><h3>Text opt-out only understood STOP</h3><p>The law expects "cancel", "quit", "unsubscribe" and Spanish words like PARE and ALTO too. Fixed and merged with the Spanish build.</p><span class="src">C14, hourly log 03:05</span></article>
+  </div>
+</div></section>
+
+<!-- 3. MONEY -->
+<section id="money"><div class="wrap">
+  <h2>What we know about the money</h2>
+  <p class="lede">All of these are planning numbers built from research, not results. They get rebuilt from the first 100 and then 500 real jobs.</p>
+
+  <div class="stats">
+    <div class="stat"><b>$57</b><span>left per $300 job after the customer cost</span></div>
+    <div class="stat"><b>19%</b><span>of each job is ours, after everything</span></div>
+    <div class="stat"><b>63%</b><span>max pro share before the model breaks</span></div>
+    <div class="stat"><b>$40</b><span>max cost to win one completed job</span></div>
+  </div>
+
+  <div class="two">
+    <div class="panel"><h3>One $300 job</h3><div class="tw"><table><thead><tr><th>Line</th><th class="num">$</th><th class="num">Share</th></tr></thead><tbody>
+      <tr><td>Customer pays (before tax)</td><td class="num">300</td><td class="num">100%</td></tr>
+      <tr><td>Pro or crew</td><td class="num">174</td><td class="num">58%</td></tr>
+      <tr><td>Dump fees and supplies</td><td class="num">21</td><td class="num">7%</td></tr>
+      <tr><td>Card and payout fees</td><td class="num">9</td><td class="num">3%</td></tr>
+      <tr><td>Refund and damage reserve</td><td class="num">6</td><td class="num">2%</td></tr>
+      <tr><td>Insurance, texts, AI</td><td class="num">8</td><td class="num">2.7%</td></tr>
+      <tr><td><b>Before customer cost</b></td><td class="num"><b>82</b></td><td class="num"><b>27.3%</b></td></tr>
+      <tr><td>Cost to win the customer</td><td class="num">25</td><td class="num">8.3%</td></tr>
+      <tr><td><b>Ours</b></td><td class="num"><b>57</b></td><td class="num"><b>19%</b></td></tr>
+    </tbody></table></div>
+    <p class="note">The $300 is a blended average: junk $380, yard $280, cleaning $220, detailing $160, bins $40.</p></div>
+
+    <div class="panel"><h3>The margin floor (your call 1)</h3>
+      <ul class="list">
+        <li><b>One-time jobs:</b> keep at least $25 or 15% of the price, whichever is more, after the customer cost. Target $40 or 20%.</li>
+        <li><b>Repeat visits:</b> at least $12.50 per planned route hour or 15%, whichever is more.</li>
+        <li><b>Checked:</b> a $189 junk job keeps $30.64 against a $28.35 floor. A $25 bin visit keeps $5.45 against $3.75. Both pass.</li>
+        <li><b>Breaks if:</b> a bin pro is paid more than about $13.70 a stop, or a plan customer costs more than about $45.</li>
+        <li><b>Enforced:</b> the software refuses any quote, pay bump, extra or refund that breaks the floor unless you log an override.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="h3">The $1M, $10M and $50M picture</h3>
+  <div class="panel"><div class="tw"><table class="scale"><thead><tr><th></th><th>$1M a year</th><th>$10M a year</th><th>$50M a year</th></tr></thead><tbody>
+    <tr><td>Jobs a month</td><td class="num">278</td><td class="num">2,778</td><td class="num">13,889</td></tr>
+    <tr><td>Jobs a working day</td><td class="num">13</td><td class="num">126</td><td class="num">631</td></tr>
+    <tr><td>Cities</td><td class="num">1</td><td class="num">5</td><td class="num">20</td></tr>
+    <tr><td>Brands per city</td><td class="num">3</td><td class="num">4</td><td class="num">5</td></tr>
+    <tr><td>Pro businesses doing 3 jobs a week</td><td class="num">22</td><td class="num">214</td><td class="num">1,070</td></tr>
+    <tr><td>Our share after costs</td><td class="num">$190k</td><td class="num">$1.90M</td><td class="num">$9.50M</td></tr>
+    <tr><td>Office and city costs</td><td class="num">$140k</td><td class="num">$1.4M</td><td class="num">$7.0M</td></tr>
+    <tr><td>Profit left</td><td class="num">$50k</td><td class="num">$500k</td><td class="num">$2.5M</td></tr>
+    <tr><td>People besides you</td><td>2 to 3</td><td>5</td><td>City leads in 20 markets, plus claims, finance, legal</td></tr>
+    <tr><td>Your hours a week</td><td class="num">~10</td><td class="num">~10</td><td class="num">~10</td></tr>
+    <tr><td>Fastest pace (stretch)</td><td>Quarter 5</td><td>Quarter 12</td><td>Quarter 20</td></tr>
+  </tbody></table></div>
+  <p class="note">Stretch scenario, not a promise. A 1% unrecorded leak at $50M is $500,000.</p></div>
+
+  <h3 class="h3">Where profit really comes from</h3>
+  <div class="grid3">
+    <article class="card"><div class="n">1</div><h3>Repeat and cross-brand customers</h3><p>A customer costs about $65 to win and buys about 2.67 jobs over their life. Getting that to 3.20 jobs adds about $677k at $50M. One shared household record across brands is the asset.</p></article>
+    <article class="card"><div class="n">2</div><h3>Business accounts</h3><p>Property managers, realtors and estate-sale firms book again and again. Planned as 40% of jobs at $1M.</p></article>
+    <article class="card"><div class="n">3</div><h3>Dense pro coverage</h3><p>One more job per crew per week means about 803 crews instead of 1,070 at $50M. Busy pros cost less to keep and say yes more.</p></article>
+    <article class="card"><div class="n">4</div><h3>Not ads, not price cuts</h3><p>Paid leads cost $94 to $134 per booked junk job. A promo far below market is what killed Homejoy.</p></article>
+  </div>
+  <p class="note">Source: round 2 scale economics, round 2 demand at scale, C4.6 floor red team, C19 section 2.</p>
+</div></section>
+
+<!-- 4. MODEL -->
+<section id="model"><div class="wrap">
+  <h2>The business model</h2>
+  <p class="lede">What survived the research, what you decided, and the risks we are building around.</p>
+  <div class="two">
+    <div class="panel"><h3>What holds</h3><ul class="list">
+      <li><b>We are the brand.</b> The customer books and pays us; an insured local pro business does the work. We stand behind it.</li>
+      <li><b>One back office, many brands.</b> Grab the Gig (pros, pay, dispatch, claims, books) is shared. Each brand is a thin copy: name, phone, site, Google profile, voice.</li>
+      <li><b>Same offer everywhere.</b> A one-time job, or a repeat plan every 4 or 12 weeks on trash day, paid per visit, cancel online in one step.</li>
+      <li><b>Pros are businesses, not workers.</b> Owner-led crews of 1 to 5 with their own liability insurance, commercial auto, and workers' comp or the waiver for everyone on the job.</li>
+      <li><b>Junk first.</b> In-home carry-out from photos, $99 to $399 range. We do not fight $79 curbside pickups or Sandy's free bulk pickup.</li>
+    </ul></div>
+    <div class="panel"><h3>What you decided</h3><ul class="list">
+      <li><b>Many brands for volume</b> (call 13, Oct 27). The research recommended one brand first; you rejected it. Volume wins.</li>
+      <li><b>Think big.</b> Every structure is sized for $1M, $10M and $50M from day one. Sequence the build, never shrink the vision.</li>
+      <li><b>Copycat brands.</b> A brand may switch an option off, never add its own.</li>
+      <li><b>Every job meets the margin floor.</b></li>
+      <li><b>English and Spanish everywhere</b>, more languages later.</li>
+      <li><b>$0 until revenue.</b> This is now in tension with launch costs (see P13).</li>
+    </ul></div>
+  </div>
+
+  <h3 class="h3">Risks we are engineering around</h3>
+  <div class="panel"><div class="tw"><table><thead><tr><th>Risk the research raised</th><th>How we build around it</th></tr></thead><tbody>
+    <tr><td>Every brand starts cold in every city</td><td>A brand cannot take bookings in a zone until signed, insured pros cover it. Each brand gets its own demand lane and a dated pass or kill test.</td></tr>
+    <tr><td>Reviews split across brands</td><td>One shared review engine, plus a family page showing the brands are one company.</td></tr>
+    <tr><td>Your hours grow with every brand</td><td>A hard owner-hours budget is a company metric. Going over it creates an automation task, not more work for you.</td></tr>
+    <tr><td>Several Google profiles at one home address can get suspended</td><td>One profile per real, verifiable location with its own crew. More locations only when the money supports a real base.</td></tr>
+    <tr><td>No cross-selling between brands</td><td>One household record with consent, and a cross-brand offer only after a job is charged.</td></tr>
+    <tr><td>Pros look like employees</td><td>Pros accept, decline or counter pay. No fines, no schedules, no uniforms. Removal only on written grounds, with notice and appeal.</td></tr>
+    <tr><td>A demand rush we cannot serve</td><td>A booking cap from day one: only show time windows that 2 qualified pro businesses can cover.</td></tr>
+    <tr><td>Damage and claims</td><td>Brand pays the customer first by fixed rules, then recovers through the pro's insurer. Never an automatic pay deduction.</td></tr>
+  </tbody></table></div></div>
+  <p class="note">Source: C19d, C19 sections 5 to 7, decision ledger.</p>
+</div></section>
+
+<!-- 5. BUILT -->
+<section id="built"><div class="wrap">
+  <h2>Built and proven vs still a draft</h2>
+  <p class="lede">"Proven" means checked by Claude in a clean copy of the code and in a real browser, not just "tests pass".</p>
+  <div class="two">
+    <div class="panel"><h3 class="green">Proven</h3><ul class="list">
+      <li><b>The engine:</b> 348 unit tests, 19 of 19 real-browser journeys, accessibility checks passing in English and Spanish.</li>
+      <li><b>Production rehearsal in Docker:</b> booking to payout, then backup, wipe and restore.</li>
+      <li><b>115 bug-bash findings fixed</b> from 4 real-browser testers, including 3 blockers. A second round found 53 more, none blockers, all majors fixed.</li>
+      <li><b>Money adds up to the cent</b> across 5 closed test jobs. 2,164 garbage requests caused zero server errors. The mail worker was killed 8 times and still sent 66 emails exactly once.</li>
+      <li><b>Money rules in code:</b> saved card, holds, $39 and $75 fees, per-yard extras approved at booking, margin floor guard.</li>
+      <li><b>Security:</b> rate limits, session controls, upload checks, security headers, 0 known package vulnerabilities.</li>
+      <li><b>English and Spanish</b> across sites, portals, emails and texts, with a gate that blocks paid Spanish bookings until legal wording is reviewed.</li>
+      <li><b>9 AI agents</b> pass 82 of 82 practice scenarios, running in shadow mode only.</li>
+      <li><b>Grab the Gig redesign</b> (generated art, step-by-step sign-up, EN and ES): 332 unit tests, 16 of 16 journeys. Waiting for your design review before merge.</li>
+    </ul></div>
+    <div class="panel"><h3 class="amber">Still a draft</h3><ul class="list">
+      <li><b>Prices and floors:</b> in code, but provisional until you approve calls 1 and 4.</li>
+      <li><b>Legal pages</b> (customer terms, pro agreement, privacy, texts): drafts for a Utah attorney.</li>
+      <li><b>Spanish legal and money wording:</b> about 100 lines need a native Utah reviewer.</li>
+      <li><b>Accounting leak fixes:</b> written, not yet committed. Opt-in backend and agent rules: committed, not yet merged.</li>
+      <li><b>28 safety builds</b> before the first live job: booking cap, defect codes, accept or counter pay, claims desk, crew roster, pro removal and appeal, W-9 tracking and more.</li>
+      <li><b>Bin Buddy site redesign:</b> built on a branch, but the brand name must change.</li>
+      <li><b>Switched off on purpose:</b> texts (until a Twilio account), live AI agents (no API key), same-day extras (until the attorney), real payments (Stripe test mode not set up).</li>
+      <li><b>Company OS and accounting department:</b> designs, not running departments.</li>
+    </ul></div>
+  </div>
+  <p class="note">Source: hourly log Oct 26 to 27, C19 section 8. Engine main branch at 53ec01a.</p>
+</div></section>
+
+<!-- 6. UNKNOWNS -->
+<section id="unknowns"><div class="wrap">
+  <h2>What we still do not know</h2>
+  <p class="lede">Each unknown has a cheap test with a date. If a test fails, the decision flips.</p>
+  <div class="panel"><div class="tw"><table><thead><tr><th>By</th><th>Test</th><th>What it decides</th></tr></thead><tbody>
+    <tr><td style="font-weight:600;white-space:nowrap">Nov 9</td><td>Survey 15 to 20 local haulers: their prices, insurance, would they work under our brand</td><td>Whether insured pros say yes at our payout caps</td></tr>
+    <tr><td style="font-weight:600;white-space:nowrap">Nov 9</td><td>Two insurance broker quotes</td><td>If our insurance costs more than about $25 a job, switch to a referral model</td></tr>
+    <tr><td style="font-weight:600;white-space:nowrap">Nov 9</td><td>5-second test of the recruiting headline with 10 to 15 haulers</td><td>Keep the headline if 7 of 10 can say back what we offer</td></tr>
+    <tr><td style="font-weight:600;white-space:nowrap">Nov 16</td><td>Native Utah review and test of the Spanish copy</td><td>Ship or rewrite the Spanish pages</td></tr>
+    <tr><td style="font-weight:600;white-space:nowrap">Nov 30</td><td>Sign-up flow results; property-manager account test</td><td>Opt-in design; whether business accounts are a real lane</td></tr>
+    <tr><td style="font-weight:600;white-space:nowrap">Dec 15</td><td>Mystery quotes from franchises, Lugg and locals</td><td>Whether our in-home price wedge holds</td></tr>
+    <tr><td style="font-weight:600;white-space:nowrap">Jan 31, 2027</td><td>Ask pros on sign-up which other trades they do</td><td>How much one pro network really serves several brands</td></tr>
+    <tr><td style="font-weight:600;">First 100 jobs</td><td>Track source, cost and outcome of every job</td><td>Real customer cost, repeat rate, claims</td></tr>
+    <tr><td style="font-weight:600;white-space:nowrap">500 jobs</td><td>Rebuild the money model from real data</td><td>Replaces every guess on this page</td></tr>
+  </tbody></table></div></div>
+
+  <div class="two" style="margin-top:18px">
+    <div class="panel"><h3>Attorney questions (top ones)</h3><ul class="list">
+      <li>Does the FTC 3-day rule reach extras the customer approves on their own phone at home?</li>
+      <li>Does our flow (we set the customer price, pros accept or counter) keep pros as independent businesses under Utah and IRS tests?</li>
+      <li>Is a card hold a "deposit" under Utah rules? Are the $39 and $75 fees enforceable as written?</li>
+      <li>Can we offset a proven damage claim against a future payout, with notice?</li>
+      <li>Does reinstatement cover the time the LLC was dissolved?</li>
+      <li>Utah's marketplace law only protects platforms that charge pros a fee. We assume it does not cover us and will never add a fee to qualify.</li>
+    </ul></div>
+    <div class="panel"><h3>CPA questions (top ones)</h3><ul class="list">
+      <li>Is residential junk hauling taxable in Utah? Are cancel and trip fees?</li>
+      <li>Do we report revenue as the full job price (we are the seller) or only our cut?</li>
+      <li>Do dump fee reimbursements and tips go on pros' 1099s?</li>
+      <li>One operating account plus one held-money account: enough for several brands?</li>
+      <li>Reinstate the old LLC ($82) or form a new one ($59): any tax reason to prefer one?</li>
+    </ul></div>
+  </div>
+  <p class="note">Also unknown until real data: signed pro rate cards, quote-to-paid rate, real dump and claim costs, whether a second brand at the same base can get its own Google profile, and how many customers agree to hear from a second brand. Sources: go-live kit part 5, C19 section 11, case board flip tests.</p>
+</div></section>
+
+<!-- 7. CALLS -->
+<section id="calls"><div class="wrap">
+  <h2>Decisions waiting for you</h2>
+  <p class="lede">In priority order. Reply "approve P13, 10, 8" or "change 4: ..." and the board updates. Full cards on the <a href="index.html#calls">main board</a>.</p>
+
+  <div class="callrow top"><div class="rank">1</div><div><h3>P13: Launch-gate fund vs the $0 rule (new)</h3><p>The first insured live job needs cash first: LLC reinstatement (~$82), name filings ($22 each), a company insurance binder, and background checks. Recommendation: a small capped, itemized fund, booked as a shared company cost or your contribution, repaid first from job profit. Pros carry their own insurance. We never take an uninsured job to keep the rule. If you do not answer: software, testing and recruiting continue at $0, and the live launch waits.</p></div></div>
+  <div class="callrow"><div class="rank">2</div><div><h3>Call 10: Reinstate the LLC (~$82)</h3><p>Unblocks name filings, the bank account, live Stripe, Google verification and insurance.</p></div></div>
+  <div class="callrow"><div class="rank">3</div><div><h3>Calls 8 and 9: New names</h3><p>Roomwise Hauling (junk), Pinecrew (pro network), Rakewell Yard Co. (yard). All checked clear. Blocks domains, filings, the Google profile and the hauler survey messages.</p></div></div>
+  <div class="callrow"><div class="rank">4</div><div><h3>Name the operations lead</h3><p>You or someone you name holds day-to-day authority for incidents and pros from the first live job, until revenue pays for the first hire.</p></div></div>
+  <div class="callrow"><div class="rank">5</div><div><h3>Calls 1, 2 and 4: Margin floor, positioning, junk prices</h3><p>$25 or 15% floor; insured local brand just under the franchises; $189 / $269 / $329 / $449 by crew size.</p></div></div>
+  <div class="callrow"><div class="rank">6</div><div><h3>Calls 6 and 7: Money rules and pro requirements</h3><p>No deposit, 48-hour hold, charge on "Looks good", $39 and $75 fees. Pros carry their own liability, auto, and workers' comp or the waiver.</p></div></div>
+  <div class="callrow"><div class="rank">7</div><div><h3>Calls 3 and 5: Pilot scope and the shared offer</h3><p>Junk only this fall, yard in spring, no snow. One-time job plus a repeat plan every 4 or 12 weeks for every brand.</p></div></div>
+  <div class="callrow"><div class="rank">8</div><div><h3>Calls 11 and 12: Hosting and company insurance</h3><p>Oracle Pay As You Go (still $0). Insurance (about $138 or more a month) decided with two broker quotes by Nov 9.</p></div></div>
+  <div class="callrow"><div class="rank">9</div><div><h3>Design review: Grab the Gig redesign</h3><p>Built and tested on a branch; merges after your look.</p></div></div>
+</div></section>
+
+<!-- 8. PLAYBOOKS -->
+<section id="playbooks"><div class="wrap">
+  <h2>The playbooks we now own</h2>
+  <p class="lede">This research was built once and is kept for every future venture: FreeGuy spawns, The Scout Report, client sites, Volt and the rest.</p>
+  <div class="two">
+    <div class="panel"><h3>Copy and conversion playbook</h3>
+      <p class="note" style="margin-top:0">From cases C14 to C17 plus client-site lessons.</p>
+      <ul class="list">
+        <li>A 10-minute start: brief, customer's own words, 12 headlines, score, red team, 5-second test.</li>
+        <li>A headline scoring sheet (clarity, specificity, credibility, difference).</li>
+        <li>Sign-up and form design: short first step, buttons where people decide, sticky phone bar.</li>
+        <li>Languages: native rewriting, review gates, legal and money lines held to a stricter standard.</li>
+        <li>Voice guides for our workers and homeowners in English and Spanish, and a swipe file of rival headlines.</li>
+        <li>9 house rules, including: never invent proof, no A/B tests without about 400 visitors per version.</li>
+      </ul></div>
+    <div class="panel"><h3>Venture operating playbook</h3>
+      <p class="note" style="margin-top:0">From cases C18, C19 and the 5 round-2 scale reports.</p>
+      <ul class="list">
+        <li>A 15-minute start: pick the model, copy the 14-department map, run the prevention checklist, set the calendar.</li>
+        <li>How each model wins or dies: lead gen, managed, bidding, employees, franchise, house of brands.</li>
+        <li>Prevention rules from DoorDash, Uber, Instacart, Handy, Homejoy, Angi and franchises, with sources.</li>
+        <li>The AI-run accounting department, ready to copy.</li>
+        <li>Legal traps: classification, tips, hidden fees, earnings claims, reviews, texts, door-to-door sales.</li>
+        <li>What changes at $1M, $10M and $50M.</li>
+      </ul></div>
+  </div>
+  <div class="panel" style="margin-top:18px"><h3>How they compound</h3><ul class="list">
+    <li><b>They load themselves.</b> Both are Claude skills that switch on whenever copy or a new venture comes up, in any project.</li>
+    <li><b>Each venture starts where this one ended.</b> The next business skips a day of research and starts from cited answers.</li>
+    <li><b>Each venture adds to them.</b> Every launch, stage change or test result is appended to the playbook's change log, so the 10th venture runs on 9 ventures of lessons.</li>
+    <li><b>The method is part of it:</b> research as cases, a red team before deciding, dated tests that can flip the call.</li>
+  </ul></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Red Pine Studio. Discoveries briefing, Oct 27, 2026. Kept up to date by Claude. Not for public sharing. <a href="index.html">Back to the board</a>.</div></footer>
+</body>
+</html>
